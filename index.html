@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Arcane Gazette</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=IM+Fell+English:ital@0;1&family=UnifrakturCook:wght@700&display=swap');
+
+:root{
+  --ink:#241a12; --muted:#665242; --paper:#e9d6a9; --paper2:#f3e6c3;
+  --line:#5b432e; --red:#7b2119; --gold:#a87825;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; color:var(--ink); background:#17120e;
+  font-family:"IM Fell English", Georgia, serif;
+  background-image:radial-gradient(#4b3727 1px,transparent 1px);
+  background-size:7px 7px;
+}
+.page{
+  max-width:1280px; margin:24px auto; padding:28px 38px 46px;
+  background:
+    linear-gradient(rgba(255,255,255,.08),rgba(0,0,0,.03)),
+    repeating-linear-gradient(0deg,rgba(90,60,20,.025) 0,rgba(90,60,20,.025) 2px,transparent 2px,transparent 5px),
+    var(--paper);
+  box-shadow:0 12px 50px #000;
+  border:1px solid #9b7743;
+}
+.masthead{text-align:center;border-top:5px double var(--line);border-bottom:5px double var(--line);padding:9px 0 12px}
+.eyebrow{font:700 13px Cinzel,serif;letter-spacing:4px;text-transform:uppercase}
+.logo{font:700 clamp(52px,9vw,104px) UnifrakturCook,serif;line-height:.95;margin:4px 0;color:#17100b;text-shadow:1px 1px #c39b5c}
+.tagline{font-style:italic;font-size:18px}
+.meta{display:flex;justify-content:space-between;border-top:1px solid var(--line);margin-top:12px;padding-top:7px;font-size:14px}
+nav{display:flex;justify-content:center;gap:25px;border-bottom:1px solid var(--line);padding:10px 0;font:700 12px Cinzel;letter-spacing:1.5px}
+nav a{color:inherit;text-decoration:none} nav a:hover{color:var(--red)}
+.breaking{margin:18px 0;background:var(--ink);color:var(--paper2);padding:8px 14px;text-align:center;font:700 13px Cinzel;letter-spacing:1px}
+.breaking span{color:#e0b15a}
+.grid{display:grid;grid-template-columns:1.65fr 1fr 1fr;gap:22px}
+article{border-right:1px solid var(--line);padding-right:18px}
+article:last-child{border:0}
+.kicker{font:700 12px Cinzel;color:var(--red);letter-spacing:2px;text-transform:uppercase}
+h1,h2,h3{font-family:Cinzel,serif;margin:7px 0 8px;line-height:1.05}
+.hero h1{font-size:clamp(30px,4vw,53px)}
+h2{font-size:26px} h3{font-size:19px}
+.deck{font-size:20px;line-height:1.25;margin:8px 0 12px}
+p{font-size:17px;line-height:1.42;margin:8px 0}
+.dropcap:first-letter{float:left;font:700 58px Cinzel;line-height:.8;padding:7px 8px 0 0}
+.rule{height:1px;background:var(--line);margin:15px 0}
+.photo{
+  position:relative; min-height:230px; overflow:hidden; margin:10px 0 14px;
+  border:5px solid #3b2b1d; background:#40362c;
+}
+.photo .scene{position:absolute;inset:0;background:
+  radial-gradient(circle at 72% 25%,#ead58b 0 7%,transparent 8%),
+  linear-gradient(145deg,transparent 48%,#171713 49% 53%,transparent 54%),
+  linear-gradient(170deg,#766044 0 35%,#32281f 36% 70%,#181512 71%);
+  filter:sepia(.6) contrast(1.05);
+}
+.photo .wizard{
+  position:absolute; width:58px;height:95px;left:28%;bottom:20px;
+  background:#191713;border-radius:45% 45% 15% 15%;
+  animation:float 3s ease-in-out infinite;
+}
+.photo .wizard:before{
+  content:"";position:absolute;width:0;height:0;border-left:32px solid transparent;border-right:32px solid transparent;
+  border-bottom:65px solid #211b16;left:-3px;top:-54px;transform:rotate(-9deg)
+}
+.photo .spark{position:absolute;width:7px;height:7px;background:#e7bd55;border-radius:50%;box-shadow:0 0 15px #ffe58a;animation:spark 1.7s infinite}
+.photo .s1{left:52%;top:34%}.photo .s2{left:64%;top:22%;animation-delay:.5s}.photo .s3{left:48%;top:17%;animation-delay:1s}
+.caption{font-size:13px;font-style:italic;text-align:center;color:var(--muted)}
+.pull{font:italic 23px "IM Fell English";text-align:center;border-top:2px solid var(--line);border-bottom:2px solid var(--line);padding:13px 7px;margin:16px 0}
+.sidebox{border:3px double var(--line);padding:12px;margin-bottom:18px}
+.sidebox h3{text-align:center;border-bottom:1px solid var(--line);padding-bottom:7px}
+ul{padding-left:20px;font-size:16px;line-height:1.55}
+.weather{text-align:center}
+.temp{font:700 38px Cinzel}
+.ticker{display:flex;gap:20px;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:20px 0;padding:8px 0;white-space:nowrap;font-size:14px}
+.ticker-track{animation:scroll 24s linear infinite}
+footer{text-align:center;border-top:5px double var(--line);margin-top:25px;padding-top:14px;font-size:14px}
+button{background:var(--ink);color:var(--paper2);border:0;padding:9px 13px;font:700 11px Cinzel;cursor:pointer}
+#spell{font-style:italic;color:var(--red)}
+@keyframes float{50%{transform:translateY(-7px)}}
+@keyframes spark{0%,100%{opacity:.2;transform:scale(.7)}50%{opacity:1;transform:scale(1.4)}}
+@keyframes scroll{to{transform:translateX(-50%)}}
+@media(max-width:850px){.page{margin:0;padding:18px}.grid{grid-template-columns:1fr}.grid article{border-right:0;border-bottom:1px solid var(--line);padding:0 0 18px}nav{gap:12px;flex-wrap:wrap}.meta{font-size:12px}}
+</style>
+</head>
+<body>
+<main class="page">
+<header class="masthead">
+  <div class="eyebrow">The Independent Chronicle of the Hidden Realms</div>
+  <div class="logo">The Arcane Gazette</div>
+  <div class="tagline">News, curiosities, and whispers from beyond the ordinary</div>
+  <div class="meta"><span>Friday, 2 October 2026</span><span>Vol. CXLII · No. 18</span><span>Three Copper Pieces</span></div>
+</header>
+
+<nav>
+<a href="#front">FRONT PAGE</a><a href="#magic">MAGIC</a><a href="#wild">WILD REALMS</a>
+<a href="#market">MARKET</a><a href="#oddities">ODDITIES</a><a href="#letters">LETTERS</a>
+</nav>
+
+<div class="breaking">✦ EXTRA! <span>THE MOONLIT BELLS HAVE RUNG TWICE — MINISTRY OFFICIALS URGE CALM</span> ✦</div>
+
+<section class="grid" id="front">
+<article class="hero">
+<div class="kicker">Front Page · Enchanted Affairs</div>
+<h1>The Midnight Observatory Opens Its Doors After 73 Silent Years</h1>
+<div class="deck">A forgotten tower above the northern moors has begun glowing again, drawing stargazers, historians, and at least one extremely confused goat.</div>
+<div class="photo" aria-label="Animated magical newspaper photograph">
+  <div class="scene"></div><div class="wizard"></div>
+  <i class="spark s1"></i><i class="spark s2"></i><i class="spark s3"></i>
+</div>
+<div class="caption">The observatory at midnight. Witnesses insist the stars were “moving sideways.”</div>
+<p class="dropcap">For generations, the old observatory stood dark against the hills, its brass dome green with age. Last night, however, every window blazed with silver light and the great telescope turned of its own accord.</p>
+<p>Professor Elian Voss, keeper of the nearby archive, says the event may be connected to a celestial alignment not recorded since the founding of the old kingdoms.</p>
+<div class="pull">“The building was not abandoned. It was waiting.” — Professor Voss</div>
+<p>Visitors are advised to keep a respectful distance until the Observatory Council determines whether the staircase is, in fact, supposed to be floating.</p>
+</article>
+
+<article id="magic">
+<div class="kicker">Magic & Society</div>
+<h2>New Charm Turns Teacups Into Tiny Libraries</h2>
+<p>A fashionable household charm now allows a teacup to unfold into a pocket-sized reading room, complete with shelves and a surprisingly judgmental librarian.</p>
+<div class="rule"></div>
+<div class="kicker">School & Scholars</div>
+<h2>First-Year Students Discover the “Vanishing Homework” Problem</h2>
+<p>Academies across the realm report that homework has been disappearing overnight. Faculty remain divided over whether this is a magical phenomenon or simply teenagers.</p>
+<div class="rule"></div>
+<div class="kicker">Opinion</div>
+<h2>The Case for Keeping Dragons in the Countryside</h2>
+<p>Dragons have occupied the hills for centuries. Their relocation would be expensive, disruptive, and frankly rather bad for the scenery.</p>
+<div class="sidebox">
+<h3>Spell of the Day</h3>
+<p id="spell">“Luminara”</p>
+<p>Produces a soft floating light suitable for reading, finding lost keys, and dramatic entrances.</p>
+<button onclick="newSpell()">Reveal Another Spell</button>
+</div>
+</article>
+
+<article id="wild">
+<div class="kicker">Wild Realms</div>
+<h2>Silver Fox Seen Walking Upright Near Briar Glen</h2>
+<p>Residents report a fox carrying a lantern and wearing what appeared to be a miniature waistcoat. Naturalists are intrigued. The fox has declined comment.</p>
+<div class="rule"></div>
+<div class="kicker">Market Watch</div>
+<h2>Moonstone Prices Rise as Potion Makers Prepare for Eclipse</h2>
+<p>Merchants expect unusual demand for moonstone, night-blooming herbs, and silver ink over the coming fortnight.</p>
+<div class="rule"></div>
+<div class="sidebox weather">
+<h3>Weather Enchantment</h3>
+<div class="temp">14°</div>
+<p>Glenhaven · Misty</p>
+<p>☾ Waning Moon · Winds from the West</p>
+</div>
+<div class="sidebox" id="oddities">
+<h3>Oddities & Notices</h3>
+<ul>
+<li>Wanted: One polite ghost for a library.</li>
+<li>Found: Brass key that hums when pointed north.</li>
+<li>Missing: Three enchanted socks. One has returned.</li>
+<li>Tonight: Lantern procession at the Old Bridge.</li>
+</ul>
+</div>
+</article>
+</section>
+
+<div class="ticker"><div class="ticker-track">
+✦ MINISTRY DENIES RUMOURS OF A SINGING STATUE · ✦ RAIN EXPECTED TO FALL UPWARD IN THE EASTERN HIGHLANDS · ✦ NEW DRAGON-BREWED TEA CAUSES TEMPORARY INVISIBILITY · ✦ OWL POST DELAYED BY UNSEASONABLY FRIENDLY GARGOYLES · ✦
+&nbsp;&nbsp;&nbsp; ✦ MINISTRY DENIES RUMOURS OF A SINGING STATUE · ✦ RAIN EXPECTED TO FALL UPWARD IN THE EASTERN HIGHLANDS · ✦ NEW DRAGON-BREWED TEA CAUSES TEMPORARY INVISIBILITY ·
+</div></div>
+
+<section id="market" class="grid">
+<article><div class="kicker">Market & Trade</div><h2>Autumn Almanac</h2><p>Chestnut wands, enchanted scarves, bottled starlight, and self-stirring soup pots are among this season's most sought-after curiosities.</p></article>
+<article id="letters"><div class="kicker">Letters to the Editor</div><h2>“Please Stop Feeding the Gargoyles”</h2><p>Our readers remind visitors that gargoyles are stone, are not pets, and do not require biscuits. The Gazette has received twelve letters on this subject.</p></article>
+<article><div class="kicker">Classifieds</div><h2>For Sale</h2><p>Antique brass astrolabe · one careful owner · occasionally predicts Tuesday twice.</p><p>Contact the Gazette offices by owl, raven, or ordinary post.</p></article>
+</section>
+
+<footer>
+<strong>THE ARCANE GAZETTE</strong> · Printed on enchanted recycled parchment · Established 1884<br>
+No actual magic was harmed in the production of this edition.
+</footer>
+</main>
+<script>
+const spells=[
+  ["Luminara","Produces a soft floating light suitable for reading."],
+  ["Aurelia","Warms a cup of tea without boiling it."],
+  ["Whisperwind","Carries a quiet message across a room."],
+  ["Velutis","Removes dust from old books without disturbing the pages."],
+  ["Somnara","Makes a pillow pleasantly cool at bedtime."]
+];
+function newSpell(){
+ const s=spells[Math.floor(Math.random()*spells.length)];
+ document.getElementById('spell').textContent='“'+s[0]+'”';
+ document.getElementById('spell').nextElementSibling.textContent=s[1];
+}
+</script>
+</body>
+</html>
